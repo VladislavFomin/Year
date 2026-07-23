@@ -28,7 +28,7 @@ st.markdown("""
     .custom-header {
         background: linear-gradient(180deg, #F8B4C8, #E8A0BF);
         padding: 30px 0;
-        margin: -20px -50px 30px -50px; /* Растягиваем на всю ширину */
+        margin: -20px -20px 30px -20px; /* Растягиваем на всю ширину */
         text-align: center;
         box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
         border-bottom: 3px solid #D4839E;
@@ -40,6 +40,7 @@ st.markdown("""
         font-family: 'Georgia', serif;
         margin: 0;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        #text-shadow: 1px 1px 3px rgba(255,255,255,0.3);
         letter-spacing: 2px;
     }
 

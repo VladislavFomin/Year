@@ -91,7 +91,7 @@ st.markdown("""
     .custom-header {
         background: linear-gradient(135deg, #F8B4C8, #E8A0BF);
         padding: 20px 0;
-        margin: -20px -50px 30px -50px;
+        margin: -20px -20px 30px -20px;
         text-align: center;
         box-shadow: 0 4px 15px rgba(232, 160, 191, 0.2);
         border-bottom: 3px solid #D4839E;
@@ -118,7 +118,7 @@ st.markdown("""
         flex-wrap: wrap;
         justify-content: center;
     }
-
+    
     .menu a {
         color: #7A4B5E;
         text-decoration: none;
@@ -164,7 +164,7 @@ st.markdown("""
     
     .slider-text {
         text-align: center;
-        font-size: 1.2em;
+        font-size: 1.12em;
         color: #5C2E3E;
         padding: 20px;
         background: #FFF8FA;
@@ -183,6 +183,21 @@ st.markdown("""
         margin-top: 20px;
     }
 
+    div[data-testid="column"] {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    div[data-testid="column"] .stButton {
+        width: 100% !important;
+    }
+    
+    div[data-testid="column"] .stButton > button {
+        width: 100% !important;
+        max-width: 150px !important;
+        padding: 10px 20px !important;
+    }
     .stButton > button {
         background: linear-gradient(135deg, #E8A0BF, #D4839E) !important;
         color: white !important;
@@ -205,9 +220,9 @@ st.markdown("""
         font-size: 0.9em;
         margin-top: 10px;
     }
+    
     </style>
 """, unsafe_allow_html=True)
-
 # Меню
 st.markdown("""
     <div class="menu">
@@ -272,10 +287,10 @@ def display_slide(index):
             st.markdown(
                 f'''
                 <div style="display: flex; justify-content: center; align-items: center; 
-                            width: 100%; padding: 20px 0;">
+                            width: 100%; padding: 10px 0; max-height: 60vh;">
                     <img src="data:{mime};base64,{img_str}" 
-                         style="max-width: 700px; 
-                                max-height: 500px; 
+                         style="max-width: 100%; 
+                                max-height: 55vh; 
                                 width: auto; 
                                 height: auto; 
                                 object-fit: contain; 
@@ -291,12 +306,6 @@ def display_slide(index):
                 f'<div style="text-align: center; padding: 100px 20px; background: #FFF8FA; border-radius: 10px; color: #B88A9A;">🖼️ [ФОТО {index + 1} НЕ НАЙДЕНО]</div>',
                 unsafe_allow_html=True)
 
-        # Текст под фото
-        st.markdown(f'<div class="slider-text">💕 {photos[index]["text"]}</div>', unsafe_allow_html=True)
-
-        # Счетчик
-        st.markdown(f'<div class="counter">{index + 1} / {len(photos)}</div>', unsafe_allow_html=True)
-
 
 # Отображение текущего слайда
 display_slide(st.session_state.slide_index)
@@ -304,13 +313,17 @@ display_slide(st.session_state.slide_index)
 # Кнопки навигации
 col1, col2, col3 = st.columns([1, 2, 1])
 with col1:
-    if st.button("⬅️ Назад", key="prev1"):
+    if st.button("⬅️ Назад", key="prev1", use_container_width=True):
         if st.session_state.slide_index > 0:
             st.session_state.slide_index -= 1
             st.rerun()
 
 with col3:
-    if st.button("Вперед ➡️", key="next1"):
+    if st.button("Вперед ➡️", key="next1", use_container_width=True):
         if st.session_state.slide_index < len(photos) - 1:
             st.session_state.slide_index += 1
             st.rerun()
+
+st.markdown(f'<div class="slider-text">💕 {photos[st.session_state.slide_index]["text"]}</div>', unsafe_allow_html=True)
+
+st.markdown(f'<div class="counter">{st.session_state.slide_index + 1} / {len(photos)}</div>', unsafe_allow_html=True)

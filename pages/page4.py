@@ -89,7 +89,7 @@ st.markdown("""
     .custom-header {
         background: linear-gradient(135deg, #F8B4C8, #E8A0BF);
         padding: 20px 0;
-        margin: -20px -50px 30px -50px;
+        margin: -20px -20px 30px -20px;
         text-align: center;
         box-shadow: 0 4px 15px rgba(232, 160, 191, 0.2);
         border-bottom: 3px solid #D4839E;

@@ -79,9 +79,10 @@ st.markdown("""
 
         /* Письмо */
         .letter-container {
-            width: 900px;
+            width: 100%;
+            max-width: 900px;
             margin: 20px auto 0 auto;
-            padding: 35px 40px;
+            padding: 25px 20px;
             background: white;
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
@@ -99,17 +100,18 @@ st.markdown("""
             color: #D4839E;
             font-family: 'Georgia', serif;
             text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-size: 1.7em;
         }
 
         .letter-container p {
             font-family: 'Georgia', serif;
             color: #5C2E3E;
-            font-size: 1.15em;
-            line-height: 2;
+            font-size: 1.12em;
+            line-height: 1.8;
             text-align: left;
             margin: 0;
+            word-wrap: break-word;
         }
 
         .hint {
@@ -223,10 +225,9 @@ with col2:
             st.session_state.envelope_open = False
             st.rerun()
 
-        st.markdown('<p class="hint hidden">👆</p>', unsafe_allow_html=True)
         st.markdown("""
                     <div class="letter-container">
-                        <h2>❤️ Моя любимая ❤️</h2>
+                      <h2>❤️ Моя любимая ❤️</h2>
                         <p>
                             Любимая, я очень рад, что год назад мы с тобой начали отношения. Это лучший год за всю мою жизнь!
                     Вспоминая весь этот год у меня разбегаются глаза, от количества крутейших дней.
@@ -258,8 +259,7 @@ with col2:
                      
                     <br><br>
                     С любовью, твой, любимый 💕
-                        </p>
+                        </p>   
                     </div>
                 """, unsafe_allow_html=True)
-
         st.markdown('</div>', unsafe_allow_html=True)
